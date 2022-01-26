@@ -15,201 +15,201 @@ namespace EmployeeManagement
     {
 
         /// <summary>
-        /// form1 control.
+        /// employeeForm control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.HtmlControls.HtmlForm employeeForm;
 
         /// <summary>
-        /// ecname control.
+        /// employeeCreateName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText ecname;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText employeeCreateName;
 
         /// <summary>
-        /// ecphone control.
+        /// employeeCreatePhone control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl ecphone;
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl employeeCreatePhone;
 
         /// <summary>
-        /// ecdept control.
+        /// employeeCreateDepartment control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlSelect ecdept;
+        protected global::System.Web.UI.HtmlControls.HtmlSelect employeeCreateDepartment;
 
         /// <summary>
-        /// ecsubject control.
+        /// employeeCreateSubject control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText ecsubject;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText employeeCreateSubject;
 
         /// <summary>
-        /// eccity control.
+        /// employeeCreateCity control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlSelect eccity;
+        protected global::System.Web.UI.HtmlControls.HtmlSelect employeeCreateCity;
 
         /// <summary>
-        /// empjoiningtime control.
+        /// employeeJoiningTime control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText empjoiningtime;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText employeeJoiningTime;
 
         /// <summary>
-        /// eenametext control.
+        /// employeeEditNameText control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText eenametext;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText employeeEditNameText;
 
         /// <summary>
-        /// eephone control.
+        /// employeeEditPhone control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl eephone;
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl employeeEditPhone;
 
         /// <summary>
-        /// eedept control.
+        /// employeeEditDepartment control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlSelect eedept;
+        protected global::System.Web.UI.HtmlControls.HtmlSelect employeeEditDepartment;
 
         /// <summary>
-        /// eesubject control.
+        /// employeeEditSubject control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText eesubject;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText employeeEditSubject;
 
         /// <summary>
-        /// eecity control.
+        /// employeeEditCity control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlSelect eecity;
+        protected global::System.Web.UI.HtmlControls.HtmlSelect employeeEditCity;
 
         /// <summary>
-        /// eetime control.
+        /// employeeEditTime control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText eetime;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText employeeEditTime;
 
         /// <summary>
-        /// ednametext control.
+        /// employeeDeleteNameText control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText ednametext;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText employeeDeleteNameText;
 
         /// <summary>
-        /// edphone control.
+        /// employeeDeletePhone control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl edphone;
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl employeeDeletePhone;
 
         /// <summary>
-        /// eddept control.
+        /// employeeDeleteDepartment control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText eddept;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText employeeDeleteDepartment;
 
         /// <summary>
-        /// edsubject control.
+        /// employeeDeleteSubject control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText edsubject;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText employeeDeleteSubject;
 
         /// <summary>
-        /// edcity control.
+        /// employeeDeleteCity control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText edcity;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText employeeDeleteCity;
 
         /// <summary>
-        /// dcname control.
+        /// departmentCreateName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText dcname;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText departmentCreateName;
 
         /// <summary>
-        /// ddname control.
+        /// departmentDeleteName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlSelect ddname;
+        protected global::System.Web.UI.HtmlControls.HtmlSelect departmentDeleteName;
 
         /// <summary>
-        /// ccname control.
+        /// cityCreateName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText ccname;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText cityCreateName;
 
         /// <summary>
-        /// cdname control.
+        /// cityDeleteName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlSelect cdname;
+        protected global::System.Web.UI.HtmlControls.HtmlSelect cityDeleteName;
     }
 }

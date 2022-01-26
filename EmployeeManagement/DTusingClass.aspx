@@ -59,7 +59,7 @@
 			display: inline-block;
 		}
 		
-		.color1 {
+		.employee-inactive-tooltip {
 			height: 25px;
 			width: 25px;
 			background-color: grey;
@@ -67,7 +67,7 @@
 			display: inline-block;
 		}
 		
-		.color2 {
+		.department-inactive-tooltip {
 			height: 25px;
 			width: 25px;
 			background-color: #f4e285;
@@ -75,7 +75,7 @@
 			display: inline-block;
 		}
 		
-		.color3 {
+		.city-inactive-tooltip {
 			height: 25px;
 			width: 25px;
 			background-color: #F77F00;
@@ -83,7 +83,7 @@
 			display: inline-block;
 		}
 		
-		.color4 {
+		.employee-department-inactive-tooltip {
 			height: 25px;
 			width: 25px;
 			background-color: #606C38;
@@ -91,7 +91,7 @@
 			display: inline-block;
 		}
 		
-		.color5 {
+		.employee-city-inactive-tooltip {
 			height: 25px;
 			width: 25px;
 			background-color: #80ffdb;
@@ -99,7 +99,7 @@
 			display: inline-block;
 		}
 		
-		.color6 {
+		.department-city-inactive-tooltip {
 			height: 25px;
 			width: 25px;
 			background-color: #8338ec;
@@ -107,7 +107,7 @@
 			display: inline-block;
 		}
 		
-		.color7 {
+		.employee-department-city-inactive-tooltip {
 			height: 25px;
 			width: 25px;
 			background-color: #ff5d8f;
@@ -115,8 +115,7 @@
 			display: inline-block;
 		}
 		
-		#ecdept,
-		#eedept {
+		#employeeCreateDepartment, #employeeEditDepartment {
 			width: 160px !important;
 		}
 		
@@ -180,148 +179,148 @@
 	</head>
 
 	<body>
-		<form id="form1" runat="server">
+		<form id="employeeForm" runat="server">
 			<div class="container-fluid">
-				<div class="modal fade" id="ecreatemodal" data-backdrop="static">
+				<div class="modal fade" id="employeeCreateModal" data-backdrop="static">
 					<div class="modal-dialog modal-dialog-centered">
 						<div class="modal-content">
 							<div class="modal-header">
 								<h4 class="modal-title">Enter Employee Details</h4>
-								<button type="button" class="close" data-dismiss="modal" onclick="reset()">&times;</button>
+								<button type="button" class="close" data-dismiss="modal" onclick="Reset()">&times;</button>
 							</div>
 							<div class="modal-body m-2">
 								<div class="row mb-4">
 									<label class="col-form-label">Name:</label>
 									<div class="col">
-										<input type="text" id="ecname" class="form-control" runat="server" required> </div>
+										<input type="text" id="employeeCreateName" class="form-control" runat="server" required> </div>
 									<label class="col-form-label">Phone:</label>
 									<div class="col">
-										<input type="number" id="ecphone" class="form-control" runat="server" required> </div>
+										<input type="number" id="employeeCreatePhone" class="form-control" runat="server" required> </div>
 								</div>
 								<div class="row mb-4">
 									<label class="col-form-label">Dept:</label>
 									<div class="col pl-4">
-										<select id="ecdept" class="form-control" multiple="true" runat="server" required></select>
+										<select id="employeeCreateDepartment" class="form-control" multiple="true" runat="server" required></select>
 									</div>
 									<label class="col-form-label">Subject:</label>
 									<div class="col">
-										<input type="text" id="ecsubject" class="form-control" runat="server" required> </div>
+										<input type="text" id="employeeCreateSubject" class="form-control" runat="server" required> </div>
 								</div>
 								<div class="row mb-4">
 									<label class="col-form-label">City:</label>
 									<div class="col-5 ml-2">
-										<select id="eccity" class="form-control" runat="server" required></select>
+										<select id="employeeCreateCity" class="form-control" runat="server" required></select>
 									</div>
 									<label class="col-form-label">Time:</label>
 									<div class="col-5">
-										<input id="empjoiningtime" class="flatpickr flatpickr-input form-control" autofocus runat="server" required> </div>
+										<input id="employeeJoiningTime" class="flatpickr flatpickr-input form-control" autofocus runat="server" required> </div>
 								</div>
 							</div>
 							<div class="modal-footer">
-								<button type="button" class="btn btn-success" onclick="ecvalidation()" runat="server">Add</button>
+								<button type="button" class="btn btn-success" onclick="EmployeeCreateValidation()" runat="server">Add</button>
 							</div>
 						</div>
 					</div>
 				</div>
-				<div class="modal fade" id="eeditmodal" data-backdrop="static">
+				<div class="modal fade" id="employeeEditModal" data-backdrop="static">
 					<div class="modal-dialog modal-dialog-centered">
 						<div class="modal-content">
 							<div class="modal-header">
 								<h4 class="modal-title">Edit Employee Details</h4>
-								<button type="button" class="close" data-dismiss="modal" onclick="reset()">&times;</button>
+								<button type="button" class="close" data-dismiss="modal" onclick="Reset()">&times;</button>
 							</div>
 							<div class="modal-body m-2">
 								<div class="row mb-4">
 									<div class="col-sm-6">
 										<label>Name</label>
-										<input type="text" id="eenametext" class="form-control" runat="server" required> </div>
+										<input type="text" id="employeeEditNameText" class="form-control" runat="server" required> </div>
 									<div class="col-sm-6">
 										<label>Phone</label>
-										<input type="number" id="eephone" class="form-control" runat="server" required> </div>
+										<input type="number" id="employeeEditPhone" class="form-control" runat="server" required> </div>
 								</div>
 								<div class="row mb-4">
 									<div class="col-sm-6">
 										<label>Dept</label>
-										<select id="eedept" class="form-control" multiple="true" data-width="100%" runat="server" required></select>
+										<select id="employeeEditDepartment" class="form-control" multiple="true" data-width="100%" runat="server" required></select>
 									</div>
 									<div class="col-sm-6">
 										<label>Subject</label>
-										<input type="text" id="eesubject" class="form-control" runat="server" required> </div>
+										<input type="text" id="employeeEditSubject" class="form-control" runat="server" required> </div>
 								</div>
 								<div class="row">
 									<div class="col-sm-6">
 										<label>City</label>
-										<select id="eecity" class="form-control" runat="server"></select>
+										<select id="employeeEditCity" class="form-control" runat="server"></select>
 									</div>
 									<div class="col-sm-6">
 										<label>Time</label>
-										<input id="eetime" class="flatpickr flatpickr-input form-control" autofocus runat="server" required> </div>
+										<input id="employeeEditTime" class="flatpickr flatpickr-input form-control" autofocus runat="server" required> </div>
 								</div>
 							</div>
 							<div class="modal-footer">
-								<button type="button" class="btn btn-danger" data-dismiss="modal" onclick="reset()" runat="server">Close</button>
-								<button type="button" class="btn btn-warning" onclick="eedit()" runat="server">Update</button>
+								<button type="button" class="btn btn-danger" data-dismiss="modal" onclick="Reset()" runat="server">Close</button>
+								<button type="button" class="btn btn-warning" onclick="EmployeeEdit()" runat="server">Update</button>
 							</div>
 						</div>
 					</div>
 				</div>
-				<div class="modal fade" id="edeletemodal" data-backdrop="static">
+				<div class="modal fade" id="employeeDeleteModal" data-backdrop="static">
 					<div class="modal-dialog modal-dialog-centered">
 						<div class="modal-content">
 							<div class="modal-header">
 								<h4 class="modal-title">Delete Employee</h4>
-								<button type="button" class="close" data-dismiss="modal" onclick="reset()">&times;</button>
+								<button type="button" class="close" data-dismiss="modal" onclick="Reset()">&times;</button>
 							</div>
 							<div class="modal-body m-2">
 								<div class="row mb-4">
 									<label class="col-form-label">Name:</label>
 									<div class="col">
-										<input type="text" id="ednametext" class="form-control" runat="server" disabled> </div>
+										<input type="text" id="employeeDeleteNameText" class="form-control" runat="server" disabled> </div>
 									<label class="col-form-label">Phone:</label>
 									<div class="col">
-										<input type="number" id="edphone" class="form-control" runat="server" disabled> </div>
+										<input type="number" id="employeeDeletePhone" class="form-control" runat="server" disabled> </div>
 								</div>
 								<div class="row mb-4">
 									<label class="col-form-label">Dept:</label>
 									<div class="col">
-										<input type="text" id="eddept" class="form-control" runat="server" disabled> </div>
+										<input type="text" id="employeeDeleteDepartment" class="form-control" runat="server" disabled> </div>
 									<label class="col-form-label">Subject:</label>
 									<div class="col">
-										<input type="text" id="edsubject" class="form-control" runat="server" disabled> </div>
+										<input type="text" id="employeeDeleteSubject" class="form-control" runat="server" disabled> </div>
 								</div>
 								<div class="row mb-4">
 									<label class="col-form-label">City:</label>
 									<div class="col">
-										<input type="text" id="edcity" class="form-control" runat="server" disabled> </div>
+										<input type="text" id="employeeDeleteCity" class="form-control" runat="server" disabled> </div>
 								</div>
 							</div>
 							<div class="modal-footer">
-								<button type="button" class="btn btn-danger" onclick="edelete()" runat="server">Delete</button>
+								<button type="button" class="btn btn-danger" onclick="EmployeeDelete()" runat="server">Delete</button>
 							</div>
 						</div>
 					</div>
 				</div>
-				<div class="modal fade" id="dcreatemodal" data-backdrop="static">
+				<div class="modal fade" id="departmentCreateModal" data-backdrop="static">
 					<div class="modal-dialog modal-dialog-centered">
 						<div class="modal-content">
 							<div class="modal-header">
 								<h4 class="modal-title">Enter Department Details</h4>
-								<button type="button" class="close" data-dismiss="modal" onclick="modal()">&times;</button>
+								<button type="button" class="close" data-dismiss="modal">&times;</button>
 							</div>
 							<div class="modal-body m-2">
 								<div class="row mb-4">
 									<label class="col-form-label">Name:</label>
 									<div class="col">
-										<input type="text" id="dcname" class="form-control" runat="server" required> </div>
+										<input type="text" id="departmentCreateName" class="form-control" runat="server" required> </div>
 								</div>
 							</div>
 							<div class="modal-footer">
-								<button type="button" class="btn btn-success" onclick="dcvalidation()" runat="server">Add</button>
+								<button type="button" class="btn btn-success" onclick="DepartmentCreateValidation()" runat="server">Add</button>
 							</div>
 						</div>
 					</div>
 				</div>
-				<div class="modal fade" id="ddeletemodal" data-backdrop="static">
+				<div class="modal fade" id="departmentDeleteModal" data-backdrop="static">
 					<div class="modal-dialog modal-dialog-centered">
 						<div class="modal-content">
 							<div class="modal-header">
@@ -332,37 +331,37 @@
 								<div class="row mb-4">
 									<label class="col-form-label">Name:</label>
 									<div class="col">
-										<select id="ddname" class="form-control" onchange="deptdelchangecolor()" runat="server"></select>
+										<select id="departmentDeleteName" class="form-control" onchange="DepartmentDeleteChangeColor()" runat="server"></select>
 									</div>
 								</div>
 							</div>
 							<div class="modal-footer">
-								<button type="button" class="btn btn-danger" onclick="ddelete()" runat="server">Delete</button>
+								<button type="button" class="btn btn-danger" onclick="DepartmentDelete()" runat="server">Delete</button>
 							</div>
 						</div>
 					</div>
 				</div>
-				<div class="modal fade" id="ccreatemodal" data-backdrop="static">
+				<div class="modal fade" id="cityCreateModal" data-backdrop="static">
 					<div class="modal-dialog modal-dialog-centered">
 						<div class="modal-content">
 							<div class="modal-header">
 								<h4 class="modal-title">Enter City Details</h4>
-								<button type="button" class="close" data-dismiss="modal" onclick="modal()">&times;</button>
+								<button type="button" class="close" data-dismiss="modal">&times;</button>
 							</div>
 							<div class="modal-body m-2">
 								<div class="row mb-4">
 									<label class="col-form-label">City Name:</label>
 									<div class="col">
-										<input type="text" id="ccname" class="form-control" runat="server" required> </div>
+										<input type="text" id="cityCreateName" class="form-control" runat="server" required> </div>
 								</div>
 							</div>
 							<div class="modal-footer">
-								<button type="button" class="btn btn-success" onclick="ccvalidation()" runat="server">Add</button>
+								<button type="button" class="btn btn-success" onclick="CityCreateValidation()" runat="server">Add</button>
 							</div>
 						</div>
 					</div>
 				</div>
-				<div class="modal fade" id="cdeletemodal" data-backdrop="static">
+				<div class="modal fade" id="cityDeleteModal" data-backdrop="static">
 					<div class="modal-dialog modal-dialog-centered">
 						<div class="modal-content">
 							<div class="modal-header">
@@ -373,28 +372,28 @@
 								<div class="row mb-4">
 									<label class="col-form-label">Name:</label>
 									<div class="col">
-										<select id="cdname" class="form-control" onchange="citydelchangecolor()" runat="server"></select>
+										<select id="cityDeleteName" class="form-control" onchange="CityDeleteChangeColor()" runat="server"></select>
 									</div>
 								</div>
 							</div>
 							<div class="modal-footer">
-								<button type="button" class="btn btn-danger" onclick="cdelete()" runat="server">Delete</button>
+								<button type="button" class="btn btn-danger" onclick="CityDelete()" runat="server">Delete</button>
 							</div>
 						</div>
 					</div>
 				</div>
 				<div class="card tab-content">
-					<div class="card-header text-left p-1" id="cardheader">
-						<button type="button" id="eadd" onclick="addemp()" class="btn btn-default btn-success"><span class="fas fa-plus"></span> Employee</button>
-						<button type="button" id="dadd" onclick="adddept()" class="btn btn-default btn-success"><span class="fas fa-plus"></span> Department</button>
-						<button type="button" id="cadd" onclick="addcity()" class="btn btn-default btn-success"><span class="fas fa-plus"></span> City</button>
-						<button type="button" id="ddel" onclick="deletedept()" class="btn btn-default btn-danger"><span class="fas fa-trash"></span> Department</button>
-						<button type="button" id="cdel" onclick="deletecity()" class="btn btn-default btn-danger"><span class="fas fa-trash"></span> City</button>
-						<button type="button" id="refresh" onclick="refreshbtn()" class="btn btn-default btn-info"><span class="fas fa-sync-alt"></span> Refresh</button>
-						<div id="infobtn" class="btn btn-secondary" data-toggle="tooltip" style="float: right;" data-html="true"><i class="fas fa-info"></i> Legend</div>
+					<div class="card-header text-left p-1" id="cardHeader">
+						<button type="button" onclick="AddEmployee()" class="btn btn-default btn-success"><span class="fas fa-plus"></span> Employee</button>
+						<button type="button" onclick="AddDepartment()" class="btn btn-default btn-success"><span class="fas fa-plus"></span> Department</button>
+						<button type="button" onclick="AddCity()" class="btn btn-default btn-success"><span class="fas fa-plus"></span> City</button>
+						<button type="button" onclick="DeleteDepartment()" class="btn btn-default btn-danger"><span class="fas fa-trash"></span> Department</button>
+						<button type="button" onclick="DeleteCity()" class="btn btn-default btn-danger"><span class="fas fa-trash"></span> City</button>
+						<button type="button" onclick="Table()" class="btn btn-default btn-info"><span class="fas fa-sync-alt"></span> Refresh</button>
+						<div id="infoButton" class="btn btn-secondary" data-toggle="tooltip" style="float: right;" data-html="true"><i class="fas fa-info"></i> Legend</div>
 					</div>
 					<div class="card-body container-fluid">
-						<table id="tableid" class="table table-bordered">
+						<table id="employeeTable" class="table table-bordered">
 							<tr id="tr"></tr>
 						</table>
 					</div>
@@ -420,55 +419,50 @@
 		<script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.colVis.min.js"></script>
 		<script src="https://cdn.datatables.net/select/1.3.3/js/dataTables.select.min.js"></script>
 		<script>
+
+            var DEPARTMENT_ID_BEFORE = "";
+            var DEPARTMENT_BUTTON_REMOVE = [];
+            var EMPLOYEE_ID = "";
+
             $(document).ready(function () {
-                debugger
-                reset();
-                $('#ecdept').select2();
-                $('#eedept').select2();
-                $("#ddname").css({
+                Reset();
+                $('#employeeCreateDepartment').select2();
+                $('#employeeEditDepartment').select2();
+                $("#departmentDeleteName").css({
                     "border-color": "red",
                     "border-width": "2.2px"
                 });
-                $("#cdname").css({
+                $("#cityDeleteName").css({
                     "border-color": "red",
                     "border-width": "2.2px"
                 });
-                $('[data-toggle="undodeptname"]').tooltip();
-                $("#infobtn").tooltip({
-                    title: '<div class="row"><div class="col-sm-1 color1"></div><pre style="color:red;"> - Employee is inactive</pre> <br> <br> </div><div class="row"><div class= "col-sm-1 color2"></div><pre style="color:red;"> - Department is inactive</pre> <br> <br> </div><div class="row"><div class="col-sm-1 color3"></div><pre style="color:red;"> - City is inactive</pre> <br> <br> </div><div class="row"><div class= "col-sm-1 color4"></div><pre style="color:red;"> - Both Employee and Department are inactive</pre> <br> <br> </div><div class="row"><div class= "col-sm-1 color5"></div><pre style="color:red;"> - Both Employee and City are inactive</pre> <br> <br> </div><div class="row"><div class="col-sm-1 color6"></div><pre style="color:red;"> - Both Department and City are inactive</pre> <br> <br> </div><div class="row"><div class="col-sm-1 color7"></div><pre style="color:red;"> - Employee, Department and City are inactive</pre></div></div>',
+                $('[data-toggle="undoDepartmentName"]').tooltip();
+                $("#infoButton").tooltip({
+                    title: '<div class="row"><div class="col-sm-1 employee-inactive-tooltip"></div><pre style="color:red;"> - Employee is inactive</pre> <br> <br> </div><div class="row"><div class= "col-sm-1 department-inactive-tooltip"></div><pre style="color:red;"> - Department is inactive</pre> <br> <br> </div><div class="row"><div class="col-sm-1 city-inactive-tooltip"></div><pre style="color:red;"> - City is inactive</pre> <br> <br> </div><div class="row"><div class= "col-sm-1 employee-department-inactive-tooltip"></div><pre style="color:red;"> - Both Employee and Department are inactive</pre> <br> <br> </div><div class="row"><div class= "col-sm-1 employee-city-inactive-tooltip"></div><pre style="color:red;"> - Both Employee and City are inactive</pre> <br> <br> </div><div class="row"><div class="col-sm-1 department-city-inactive-tooltip"></div><pre style="color:red;"> - Both Department and City are inactive</pre> <br> <br> </div><div class="row"><div class="col-sm-1 employee-department-city-inactive-tooltip"></div><pre style="color:red;"> - Employee, Department and City are inactive</pre></div></div>',
                     html: true,
                 });
-                table();
+                Table();
             });
 
-            function refreshbtn() {
-                debugger
-                table();
+            function Reset() {
+                document.getElementById("employeeForm").reset();
             }
 
-            function reset() {
-                debugger
-                document.getElementById("form1").reset();
-            }
-
-            function deptdelchangecolor() {
-                debugger
-                $("#ddname").css({
+            function DepartmentDeleteChangeColor() {
+                $("#departmentDeleteName").css({
                     "border-color": "green",
                     "border-width": "2.2px"
                 });
             }
 
-            function citydelchangecolor() {
-                debugger
-                $("#cdname").css({
+            function CityDeleteChangeColor() {
+                $("#cityDeleteName").css({
                     "border-color": "green",
                     "border-width": "2.2px"
                 });
             }
 
-            function table() {
-                debugger
+            function Table() {
                 $.ajax({
                     type: "POST",
                     url: "DTusingClass.aspx/Table",
@@ -477,10 +471,9 @@
                         $('#tr').html("LOADING....");
                     },
                     success: function (result) {
-                        debugger
                         var json = JSON.parse(result.d);
-                        if (!$.fn.DataTable.isDataTable('#tableid')) {
-                            $("#tableid").DataTable({
+                        if (!$.fn.DataTable.isDataTable('#employeeTable')) {
+                            $("#employeeTable").DataTable({
                                 "responsive": true,
                                 "bScrollCollapse": true,
                                 "autoWidth": false,
@@ -488,19 +481,19 @@
                                 "data": json,
                                 dom: '<"row"<"col-xl-2 col-lg-12 col-md-12 col-sm-12"P><"col-xl-10 col-lg-12 col-md-12 col-sm-12"frtipl>>',
                                 "columns": [{
-                                    "data": "emp_name",
+                                    "data": "EmployeeName",
                                     title: "Employee Name"
                                 }, {
-                                    "data": "phone",
+                                    "data": "Phone",
                                     title: "Phone"
                                 }, {
-                                    "data": "subject",
+                                    "data": "Subject",
                                     title: "Subject"
                                 }, {
-                                    "data": "is_active",
+                                    "data": "IsActive",
                                     title: "Is Active"
                                 }, {
-                                    "data": "dept_name",
+                                    "data": "DepartmentName",
                                     title: "Department",
                                     "render": function (data, type, row) {
                                         if (type === 'sp') {
@@ -517,21 +510,21 @@
                                         show: true
                                     },
                                 }, {
-                                    "data": "city_name",
+                                    "data": "CityName",
                                     title: "City"
                                 }, {
-                                    "data": "emp_joining_time",
+                                    "data": "EmployeeJoiningTime",
                                     title: "Joining Time",
                                     "type": "date"
                                 }, {
-                                    "data": "buttons",
+                                    "data": "Buttons",
                                     title: "Buttons"
                                 }, {
-                                    "data": "dept_is_deleted",
-                                    title: "Dept_is_Deleted"
+                                    "data": "DepartmentIsDeleted",
+                                    title: "Dept_Is_Deleted"
                                 }, {
-                                    "data": "city_is_deleted",
-                                    title: "City_is_Deleted"
+                                    "data": "CityIsDeleted",
+                                    title: "City_Is_Deleted"
                                 },],
                                 "buttons": [{
                                     extend: 'collection',
@@ -586,7 +579,6 @@
                                         options: [{
                                             label: 'Yes',
                                             value: function (rowData, rowIdx) {
-                                                debugger
                                                 return rowData["is_active"] == "y";
                                             },
                                         }, {
@@ -619,15 +611,14 @@
                                         filter: 'applied'
                                     }).data().length;
                                     if (rows == 0) {
-                                        $("#tableid").DataTable().button(2).disable();
+                                        $("#employeeTable").DataTable().button(2).disable();
                                     } else {
-                                        $("#tableid").DataTable().button(2).enable();
+                                        $("#employeeTable").DataTable().button(2).enable();
                                     }
-                                    $.each($("#tableid tr"), function () {
-                                        debugger
-                                        var rowCount = $("#tableid tr th").length;
-                                        var text1 = $(this).find('td').eq(8).text();
-                                        var text = $(this).find('td').eq(7).text().split(" ").join("");
+                                    $.each($("#employeeTable tr"), function () {
+                                        let rowCount = $("#employeeTable tr th").length;
+                                        let text1 = $(this).find('td').eq(8).text();
+                                        let text = $(this).find('td').eq(7).text().split(" ").join("");
                                         if (text == 'Emp') {
                                             $(this).css('background-color', 'grey');
                                         }
@@ -652,136 +643,126 @@
                                     });
                                 },
                             });
-                            $("#tableid").DataTable().buttons().container().appendTo($('#cardheader'));
-                            $("#tableid_length").insertBefore("#tableid");
+                            $("#employeeTable").DataTable().buttons().container().appendTo($('#cardHeader'));
+                            $("#employeeTable_length").insertBefore("#employeeTable");
                         } else {
-                            debugger
-                            $("#tableid").DataTable().clear();
-                            $('#tableid tbody:first').before('<tr class="trr"></tr>');
-                            $('.trr').html("LOADING....");
-                            $("#tableid").DataTable().rows.add(json).draw();
-                            $(".trr").show();
+                            $("#employeeTable").DataTable().clear();
+                            $('#employeeTable tbody:first').before('<tr class="loading-tr"></tr>');
+                            $('.loading-tr').html("LOADING....");
+                            $("#employeeTable").DataTable().rows.add(json).draw();
+                            $(".loading-tr").show();
                         }
                     },
                     complete: function () {
                         $("#tr").toggle();
                         setTimeout(function () {
-                            $(".trr").remove();
+                            $(".loading-tr").remove();
                         }, 2000);
                     }
                 });
             }
-            var deptidbefore = "";
-            var deptbtnremove = [];
 
-            function edeptdropdown(dept) {
-                debugger
+            function EmployeeDepartmentDropdown(dept) {
                 $.ajax({
                     type: "POST",
-                    url: "DTusingClass.aspx/Ddropdown",
+                    url: "DTusingClass.aspx/DepartmentDropdown",
                     contentType: "application/json; charset=utf-8",
                     success: function (result) {
-                        debugger
                         var data = JSON.parse(result.d);
                         if (dept == null) {
-                            var s = '<option selected value="0" disabled>Choose one</option>';
-                            for (i = 0; i < data.length; i = i + 3) {
-                                s += '<option value=' + data[i] + '>' + data[i + 1] + '</option>';
-                                $("#ecdept").html(s);
-                                $("#eedept").html(s);
-                                $("#ddname").html(s);
-                                $('#ecdept option').attr('selected', false);
+                            var departmentOption = '<option selected value="0" disabled>Choose one</option>';
+                            for (let i=0; i<data.length; i=i+3) {
+                                departmentOption += '<option value=' + data[i] + '>' + data[i+1] + '</option>';
+                                $("#employeeCreateDepartment").html(departmentOption);
+                                $("#employeeEditDepartment").html(departmentOption);
+                                $("#departmentDeleteName").html(departmentOption);
+                                $('#employeeCreateDepartment option').attr('selected', false);
                             }
                         } else {
-                            debugger
-                            var s = '';
+                            var departmentSelectedOption = '';
                             var selected = "";
                             var deptlength = dept.split(",").length;
-                            for (i = 0; i < data.length; i = i + 3) {
-                                for (j = 0; j < deptlength; j++) {
-                                    if (data[i + 1] == dept.split(',')[j]) {
+                            for (let i=0; i<data.length; i=i+3) {
+                                for (let j=0; j<deptlength; j++) {
+                                    if (data[i+1] == dept.split(',')[j]) {
                                         if (data[i + 2] == 1) {
-                                            s += '<option selected value=' + data[i] + ' disabled>' + data[i + 1] + '</option>';
-                                            deptbtnremove.push(data[i + 1]);
+                                            departmentSelectedOption += '<option selected value=' + data[i] + ' disabled>' + data[i+1] + '</option>';
+                                            DEPARTMENT_BUTTON_REMOVE.push(data[i+1]);
                                         } else {
-                                            s += '<option selected value=' + data[i] + '>' + data[i + 1] + '</option>';
-                                            deptbtnremove.pop(data[i + 1]);
+                                            departmentSelectedOption += '<option selected value=' + data[i] + '>' + data[i+1] + '</option>';
+                                            DEPARTMENT_BUTTON_REMOVE.pop(data[i+1]);
                                         }
                                         j = deptlength;
                                         selected = 1;
                                     }
                                 }
                                 if (selected == "0") {
-                                    if (data[i + 2] == 1) {
-                                        s += '<option value=' + data[i] + ' disabled>' + data[i + 1] + '</option>';
+                                    if (data[i+2] == 1) {
+                                        departmentSelectedOption += '<option value=' + data[i] + ' disabled>' + data[i+1] + '</option>';
                                     } else {
-                                        s += '<option value=' + data[i] + '>' + data[i + 1] + '</option>';
+                                        departmentSelectedOption += '<option value=' + data[i] + '>' + data[i+1] + '</option>';
                                     }
                                 }
-                                $("#eedept").html(s);
+                                $("#employeeEditDepartment").html(departmentSelectedOption);
                                 selected = 0;
                             }
                         }
-                        debugger
-                        deptidbefore = $("#eedept").val();
+                        DEPARTMENT_ID_BEFORE = $("#employeeEditDepartment").val();
                     }
                 });
-                debugger
                 setTimeout(function () {
-                    for (var i = 0; i < deptbtnremove.length; i++) {
-                        $('.select2-selection__choice[title="' + deptbtnremove[i] + '"] > .select2-selection__choice__remove').remove()
+                    for (let i = 0; i < DEPARTMENT_BUTTON_REMOVE.length; i++) {
+                        $('.select2-selection__choice[title="' + DEPARTMENT_BUTTON_REMOVE[i] + '"] > .select2-selection__choice__remove').remove()
                     }
                 }, 50);
             }
 
-            function ecitydropdown(city) {
+            function EmployeeCityDropdown(city) {
                 $.ajax({
                     type: "POST",
-                    url: "DTusingClass.aspx/Cdropdown",
+                    url: "DTusingClass.aspx/CityDropdown",
                     contentType: "application/json; charset=utf-8",
                     success: function (result) {
-                        debugger
                         var data = JSON.parse(result.d);
                         if (city == null) {
-                            var s = '<option selected value="" disabled>Choose one</option>';
-                            for (i = 0; i < data.length; i = i + 3) {
-                                s += '<option value=' + data[i] + '>' + data[i + 1] + '</option>';
-                                $("#eccity").html(s);
-                                $("#eecity").html(s);
-                                $("#cdname").html(s);
+                            var cityOption = '<option selected value="" disabled>Choose one</option>';
+                            for (let i=0; i<data.length; i=i+3) {
+                                cityOption += '<option value=' + data[i] + '>' + data[i+1] + '</option>';
+                                $("#employeeCreateCity").html(cityOption);
+                                $("#employeeEditCity").html(cityOption);
+                                $("#cityDeleteName").html(cityOption);
                             }
-                            $('#cdname').selectize({});
+                            $('#cityDeleteName').selectize({});
                         } else {
-                            var s = '<option selected value="0" disabled>Choose one</option>';
-                            for (i = 0; i < data.length; i = i + 3) {
-                                if (data[i + 1] == city) {
-                                    if (data[i + 2] == 1) {
-                                        s += '<option selected value=' + data[i] + ' disabled>' + data[i + 1] + '</option>';
+                            var citySelectedOption = '<option selected value="0" disabled>Choose one</option>';
+                            for (let i=0; i<data.length; i=i+3) {
+                                if (data[i+1] == city) {
+                                    if (data[i+2] == 1) {
+                                        citySelectedOption += '<option selected value=' + data[i] + ' disabled>' + data[i+1] + '</option>';
                                     } else {
-                                        s += '<option selected value=' + data[i] + '>' + data[i + 1] + '</option>';
+                                        citySelectedOption += '<option selected value=' + data[i] + '>' + data[i + 1] + '</option>';
                                     }
                                 } else {
-                                    if (data[i + 2] == 1) {
-                                        s += '<option value=' + data[i] + ' disabled>' + data[i + 1] + '</option>';
+                                    if (data[i+2] == 1) {
+                                        citySelectedOption += '<option value=' + data[i] + ' disabled>' + data[i+1] + '</option>';
                                     } else {
-                                        s += '<option value=' + data[i] + '>' + data[i + 1] + '</option>';
+                                        citySelectedOption += '<option value=' + data[i] + '>' + data[i+1] + '</option>';
                                     }
                                 }
-                                $("#eccity").html(s);
-                                $("#eecity").html(s);
+                                $("#employeeCreateCity").html(citySelectedOption);
+                                $("#employeeEditCity").html(citySelectedOption);
                             }
                         }
                     }
                 });
             }
 
-            function addemp() {
-                debugger
-                $('#ecreatemodal').modal('show');
-                edeptdropdown();
-                ecitydropdown();
+            function AddEmployee() {
+                $('#employeeCreateModal').modal('show');
+                EmployeeDepartmentDropdown();
+                EmployeeCityDropdown();
                 var date = new Date();
-                $('#empjoiningtime').flatpickr({
+                $('#employeeJoiningTime').flatpickr({
                     enableTime: true,
                     dateFormat: "m-d-Y G:i K",
                     defaultDate: date,
@@ -789,39 +770,37 @@
                 });
             }
 
-            function ecvalidation() {
-                debugger
-                var ecnametext = document.getElementById("ecname").value;
-                var ecphone = document.getElementById("ecphone").value;
-                var ecdept = $("#ecdept").find('option:selected').text();
-                var ecsubject = document.getElementById("ecsubject").value;
-                var eccity = $("#eccity").find('option:selected').text();
-                if (ecnametext == null || ecnametext == "") {
+            function EmployeeCreateValidation() {
+                var employeeCreateName = document.getElementById("employeeCreateName").value;
+                var employeeCreatePhone = document.getElementById("employeeCreatePhone").value;
+                var employeeCreateDepartment = $("#employeeCreateDepartment").find('option:selected').text();
+                var employeeCreateSubject = document.getElementById("employeeCreateSubject").value;
+                var employeeCreateCity = $("#employeeCreateCity").find('option:selected').text();
+                if (employeeCreateName == null || employeeCreateName == "") {
                     Swal.fire({
                         icon: 'error',
                         title: 'Name can\'t be blank',
                     })
                     return false;
-                } else if (ecphone.length != 10) {
+                } else if (employeeCreatePhone.length != 10) {
                     Swal.fire({
                         icon: 'error',
                         title: 'Phone number must be 10 characters long',
                     })
                     return false;
-                } else if (ecdept == null || ecdept == "") {
+                } else if (employeeCreateDepartment == null || employeeCreateDepartment == "") {
                     Swal.fire({
                         icon: 'error',
                         title: 'Department can\'t be blank',
                     })
                     return false;
-                } else if (ecsubject == null || ecsubject == "") {
-                    debugger
+                } else if (employeeCreateSubject == null || employeeCreateSubject == "") {
                     Swal.fire({
                         icon: 'error',
                         title: 'Subject can\'t be blank',
                     })
                     return false;
-                } else if (eccity == null || eccity == "Choose one") {
+                } else if (employeeCreateCity == null || employeeCreateCity == "Choose one") {
                     Swal.fire({
                         icon: 'error',
                         title: 'City can\'t be blank',
@@ -838,34 +817,32 @@
                         cancelButtonText: 'No',
                     }).then((result) => {
                         if (result.isConfirmed) {
-                            debugger
-                            var time = $("#empjoiningtime").val();
-                            var ecnametext = document.getElementById("ecname").value;
-                            var ecphone = document.getElementById("ecphone").value;
-                            var ecdeptid = $("#ecdept").val();
-                            var ecdeptidcount = $("#ecdept :selected").length;
-                            var ecsubject = document.getElementById("ecsubject").value;
-                            var eccityid = document.getElementById("eccity").value;
+                            var employeeJoiningTime = $("#employeeJoiningTime").val();
+                            var employeeCreateName = document.getElementById("employeeCreateName").value;
+                            var employeeCreatePhone = document.getElementById("employeeCreatePhone").value;
+                            var employeeCreateDepartmentID = $("#employeeCreateDepartment").val();
+                            var employeeCreateDepartmentIDCount = $("#employeeCreateDepartment :selected").length;
+                            var employeeCreateSubject = document.getElementById("employeeCreateSubject").value;
+                            var employeeCreateCityID = document.getElementById("employeeCreateCity").value;
                             var details = {
-                                ecnametext: ecnametext,
-                                ecphone: ecphone,
-                                ecdeptid: ecdeptid,
-                                ecdeptidcount: ecdeptidcount,
-                                ecsubject: ecsubject,
-                                eccityid: eccityid,
-                                time: time
+                                employeeCreateName: employeeCreateName,
+                                employeeCreatePhone: employeeCreatePhone,
+                                employeeCreateDepartmentID: employeeCreateDepartmentID,
+                                employeeCreateDepartmentIDCount: employeeCreateDepartmentIDCount,
+                                employeeCreateSubject: employeeCreateSubject,
+                                employeeCreateCityID: employeeCreateCityID,
+                                employeeJoiningTime: employeeJoiningTime
                             };
                             var str = JSON.stringify(details);
-                            $('#ecreatemodal').modal('hide');
+                            $('#employeeCreateModal').modal('hide');
                             $.ajax({
                                 type: "POST",
-                                url: "DTusingClass.aspx/Ecreate",
+                                url: "DTusingClass.aspx/EmployeeCreate",
                                 contentType: "application/json; charset=utf-8",
                                 data: str,
                                 success: function () {
-                                    debugger
-                                    reset();
-                                    table();
+                                    Reset();
+                                    Table();
                                     Swal.fire('Employee has been created!', ' ', 'success')
                                 }
                             });
@@ -873,81 +850,72 @@
                     })
                 }
             }
-            var pk = "";
-            var eename = "";
 
-            function editbtn(emp_id) {
-                debugger
+            function EditButton(employeeID) {
                 var details = {
-                    emp_id: emp_id
+                    employeeID: employeeID
                 };
                 var str = JSON.stringify(details);
                 $.ajax({
                     type: "POST",
-                    url: "DTusingClass.aspx/Eeditdetails",
+                    url: "DTusingClass.aspx/EmployeeEditDetails",
                     contentType: "application/json; charset=utf-8",
                     data: str,
                     success: function (result) {
-                        debugger
                         var data = JSON.parse(result.d);
-                        pk = data[5];
-                        eename = emp_id;
-                        edeptdropdown(data[3]);
-                        ecitydropdown(data[4]);
-                        document.getElementById('eenametext').value = data[0];
-                        document.getElementById("eephone").value = data[1];
-                        $('#eedept option').attr('selected', false);
-                        $('#eedept option:contains("' + data[3] + '")').attr('selected', true);
-                        document.getElementById("eesubject").value = data[2];
-                        $('#eecity option').attr('selected', false);
-                        $('#eecity option:contains("' + data[4] + '")').attr('selected', true);
-                        debugger
+                        EMPLOYEE_ID = employeeID;
+                        EmployeeDepartmentDropdown(data[3]);
+                        EmployeeCityDropdown(data[4]);
+                        document.getElementById('employeeEditNameText').value = data[0];
+                        document.getElementById("employeeEditPhone").value = data[1];
+                        $('#employeeEditDepartment option').attr('selected', false);
+                        $('#employeeEditDepartment option:contains("' + data[3] + '")').attr('selected', true);
+                        document.getElementById("employeeEditSubject").value = data[2];
+                        $('#employeeEditCity option').attr('selected', false);
+                        $('#employeeEditCity option:contains("' + data[4] + '")').attr('selected', true);
                         var date = new Date();
-                        var d = data[6];
-                        $('#eetime').flatpickr({
+                        $('#employeeEditTime').flatpickr({
                             enableTime: true,
                             dateFormat: "m-d-Y G:i K",
-                            defaultDate: data[6],
+                            defaultDate: data[5],
                             maxDate: date,
                         });
                     }
                 });
             }
 
-            function eedit() {
-                debugger
-                $('#eemodal').modal('hide');
-                var eenametext = document.getElementById("eenametext").value;
-                var eephone = document.getElementById("eephone").value;
-                var eedept = $("#eedept").find('option:selected').text();
-                var eesubject = document.getElementById("eesubject").value;
-                var eecity = $("#eecity").find('option:selected').text();
-                if (eenametext == null || eenametext == "") {
+            function EmployeeEdit() {
+                $('#employeeEditModal').modal('hide');
+                var employeeEditNameText = document.getElementById("employeeEditNameText").value;
+                var employeeEditPhone = document.getElementById("employeeEditPhone").value;
+                var employeeEditDepartment = $("#employeeEditDepartment").find('option:selected').text();
+                var employeeEditSubject = document.getElementById("employeeEditSubject").value;
+                var employeeEditCity = $("#employeeEditCity").find('option:selected').text();
+                if (employeeEditNameText == null || employeeEditNameText == "") {
                     Swal.fire({
                         icon: 'error',
                         title: 'Name can\'t be blank',
                     })
                     return false;
-                } else if (eephone.length != 10) {
+                } else if (employeeEditPhone.length != 10) {
                     Swal.fire({
                         icon: 'error',
                         title: 'Phone number must be 10 characters long',
                     })
                     return false;
-                } else if (eedept == null || eedept == "") {
+                } else if (employeeEditDepartment == null || employeeEditDepartment == "") {
                     Swal.fire({
                         icon: 'error',
                         title: 'Department can\'t be blank',
                     })
                     return false;
-                } else if (eesubject == null || eesubject == "") {
-                    debugger
+                } else if (employeeEditSubject == null || employeeEditSubject == "") {
                     Swal.fire({
                         icon: 'error',
                         title: 'Subject can\'t be blank',
                     })
                     return false;
-                } else if (eecity == null || eecity == "Choose one") {
+                } else if (employeeEditCity == null || employeeEditCity == "Choose one") {
                     Swal.fire({
                         icon: 'error',
                         title: 'City can\'t be blank',
@@ -958,15 +926,14 @@
                     Swal.fire({
                         title: 'Do you want to update?',
                         icon: 'warning',
-                        html: '<input style="display:none" id="empdeptdeldatetimepicker" class="flatpickr flatpickr-input form-control" autofocus>',
+                        html: '<input style="display:none" id="employeeDepartmentDeleteDateTime" class="flatpickr flatpickr-input form-control" autofocus>',
                         showCancelButton: true,
                         confirmButtonColor: '#3085d6',
                         cancelButtonColor: '#d33',
                         confirmButtonText: 'Yes',
                         cancelButtonText: 'No',
                         didOpen: function () {
-                            debugger
-                            $('#empdeptdeldatetimepicker').flatpickr({
+                            $('#employeeDepartmentDeleteDateTime').flatpickr({
                                 enableTime: true,
                                 dateFormat: "m-d-Y G:i K",
                                 defaultDate: date,
@@ -975,46 +942,42 @@
                         }
                     }).then((result) => {
                         if (result.isConfirmed) {
-                            debugger
-                            var time = $("#empdeptdeldatetimepicker").val();
+                            var time = $("#employeeDepartmentDeleteDateTime").val();
                             var date = flatpickr.parseDate(time, "m-d-Y G:i K");
                             var month = date.getMonth() + 1;
                             time = date.getFullYear() + "-" + month + "-" + date.getDate() + " " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
-                            $('#eemodal').modal('hide');
-                            var eenametext = document.getElementById("eenametext").value;
-                            var eephone = document.getElementById("eephone").value;
-                            var deptidafter = $("#eedept").val();
-                            var eesubject = document.getElementById("eesubject").value;
-                            var eecityid = document.getElementById("eecity").value;
-                            var deptid = deptidbefore.toString();
-                            var eedeptid = deptidafter.toString();
-                            var joiningtime = $("#eetime").val();
-                            var date = flatpickr.parseDate(joiningtime, "m-d-Y G:i K");
-                            var joiningmonth = date.getMonth() + 1;
-                            joiningtime = date.getFullYear() + "-" + joiningmonth + "-" + date.getDate() + " " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
+                            var employeeEditNameText = document.getElementById("employeeEditNameText").value;
+                            var employeeEditPhone = document.getElementById("employeeEditPhone").value;
+                            var departmentIDAfter = $("#employeeEditDepartment").val();
+                            var employeeEditSubject = document.getElementById("employeeEditSubject").value;
+                            var employeeEditCityID = document.getElementById("employeeEditCity").value;
+                            var departmentID = DEPARTMENT_ID_BEFORE.toString();
+                            var employeeEditDepartmentID = departmentIDAfter.toString();
+                            var joiningTime = $("#employeeEditTime").val();
+                            var date = flatpickr.parseDate(joiningTime, "m-d-Y G:i K");
+                            var joiningMonth = date.getMonth() + 1;
+                            joiningTime = date.getFullYear() + "-" + joiningMonth + "-" + date.getDate() + " " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
                             var details = {
-                                eename: eename,
-                                eenametext: eenametext,
-                                eephone: eephone,
-                                eedeptid: eedeptid,
-                                eesubject: eesubject,
-                                eecityid: eecityid,
-                                pk: pk,
-                                deptid: deptid,
+                                employeeEditName: EMPLOYEE_ID,
+                                employeeEditNameText: employeeEditNameText,
+                                employeeEditPhone: employeeEditPhone,
+                                employeeEditDepartmentID: employeeEditDepartmentID,
+                                employeeEditSubject: employeeEditSubject,
+                                employeeEditCityID: employeeEditCityID,
+                                departmentID: departmentID,
                                 time: time,
-                                joiningtime: joiningtime
+                                joiningTime: joiningTime
                             };
                             var str = JSON.stringify(details);
-                            $('#eeditmodal').modal('hide');
+                            $('#employeeEditModal').modal('hide');
                             $.ajax({
                                 type: "POST",
-                                url: "DTusingClass.aspx/Eedit",
+                                url: "DTusingClass.aspx/EmployeeEdit",
                                 contentType: "application/json; charset=utf-8",
                                 data: str,
                                 success: function () {
-                                    debugger
-                                    reset();
-                                    table();
+                                    Reset();
+                                    Table();
                                     Swal.fire('Employee has been updated!', ' ', 'success')
                                 }
                             });
@@ -1023,21 +986,19 @@
                 }
             }
 
-            function deletebtn(emp_id) {
-                debugger
+            function DeleteButton(employeeID) {
                 var date = new Date();
                 Swal.fire({
                     title: 'Are you sure you want to make the employee inactive?',
                     icon: 'warning',
-                    html: '<input style="display:none" id="empdeldatetimepicker" class="flatpickr flatpickr-input form-control" autofocus>',
+                    html: '<input style="display:none" id="employeeDeleteDateTime" class="flatpickr flatpickr-input form-control" autofocus>',
                     showCancelButton: true,
                     confirmButtonColor: '#3085d6',
                     cancelButtonColor: '#d33',
                     confirmButtonText: 'Yes',
                     cancelButtonText: 'No',
                     didOpen: function () {
-                        debugger
-                        $('#empdeldatetimepicker').flatpickr({
+                        $('#employeeDeleteDateTime').flatpickr({
                             enableTime: true,
                             dateFormat: "m-d-Y G:i K",
                             defaultDate: date,
@@ -1046,25 +1007,23 @@
                     }
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        debugger
-                        var time = $("#empdeldatetimepicker").val();
+                        var time = $("#employeeDeleteDateTime").val();
                         var date = flatpickr.parseDate(time, "m-d-Y G:i K");
                         var month = date.getMonth() + 1;
                         time = date.getFullYear() + "-" + month + "-" + date.getDate() + " " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
                         var details = {
-                            emp_id: emp_id,
+                            employeeID: employeeID,
                             time: time
                         };
                         var str = JSON.stringify(details);
                         $.ajax({
                             type: "POST",
-                            url: "DTusingClass.aspx/Edelete",
+                            url: "DTusingClass.aspx/EmployeeDelete",
                             contentType: "application/json; charset=utf-8",
                             data: str,
                             success: function () {
-                                debugger
-                                reset();
-                                table();
+                                Reset();
+                                Table();
                             }
                         });
                         Swal.fire('Employee is inactive now!', ' ', 'success')
@@ -1072,8 +1031,7 @@
                 })
             }
 
-            function undoemp(emp_id) {
-                debugger
+            function UndoEmployee(employeeID) {
                 Swal.fire({
                     title: 'Are you sure you want to make the employee active?',
                     icon: 'warning',
@@ -1085,17 +1043,16 @@
                 }).then((result) => {
                     if (result.isConfirmed) {
                         var details = {
-                            emp_id: emp_id
+                            employeeID: employeeID
                         };
                         var str = JSON.stringify(details);
                         $.ajax({
                             type: "POST",
-                            url: "DTusingClass.aspx/Undo",
+                            url: "DTusingClass.aspx/UndoEmployee",
                             contentType: "application/json; charset=utf-8",
                             data: str,
                             success: function () {
-                                debugger
-                                table();
+                                Table();
                             }
                         });
                         Swal.fire('Employee is active now!', ' ', 'success')
@@ -1103,15 +1060,13 @@
                 })
             }
 
-            function adddept() {
-                debugger
-                $('#dcreatemodal').modal('show');
+            function AddDepartment() {
+                $('#departmentCreateModal').modal('show');
             }
 
-            function dcvalidation() {
-                debugger
-                var dcname = document.getElementById("dcname").value;
-                if (dcname == null || dcname == "") {
+            function DepartmentCreateValidation() {
+                var departmentCreateName = document.getElementById("departmentCreateName").value;
+                if (departmentCreateName == null || departmentCreateName == "") {
                     Swal.fire({
                         icon: 'error',
                         title: 'Name can\'t be blank',
@@ -1128,22 +1083,20 @@
                         cancelButtonText: 'No',
                     }).then((result) => {
                         if (result.isConfirmed) {
-                            debugger
-                            var dcname = document.getElementById("dcname").value;
+                            var departmentCreateName = document.getElementById("departmentCreateName").value;
                             var details = {
-                                dcname: dcname
+                                departmentCreateName: departmentCreateName
                             };
                             var str = JSON.stringify(details);
-                            $('#dcreatemodal').modal('hide');
+                            $('#departmentCreateModal').modal('hide');
                             $.ajax({
                                 type: "POST",
-                                url: "DTusingClass.aspx/Dcreate",
+                                url: "DTusingClass.aspx/DepartmentCreate",
                                 contentType: "application/json; charset=utf-8",
                                 data: str,
                                 success: function () {
-                                    debugger
-                                    table();
-                                    edeptdropdown();
+                                    Table();
+                                    EmployeeDepartmentDropdown();
                                     Swal.fire('Department has been created!', ' ', 'success')
                                 }
                             });
@@ -1152,19 +1105,18 @@
                 }
             }
 
-            function deletedept() {
-                debugger
-                $("#ddname").css({
+            function DeleteDepartment() {
+                $("#departmentDeleteName").css({
                     "border-color": "red",
                     "border-width": "2.2px"
                 });
-                $('#ddeletemodal').modal('show');
-                edeptdropdown();
+                $('#departmentDeleteModal').modal('show');
+                EmployeeDepartmentDropdown();
             }
 
-            function ddelete() {
-                var ddname = $("#ddname").val();
-                if (ddname == null || ddname == "Choose one") {
+            function DepartmentDelete() {
+                var departmentDeleteName = $("#departmentDeleteName").val();
+                if (departmentDeleteName == null || departmentDeleteName == "Choose one") {
                     Swal.fire({
                         icon: 'error',
                         title: 'Department Name can\'t be blank',
@@ -1181,24 +1133,22 @@
                         cancelButtonText: 'No',
                     }).then((result) => {
                         if (result.isConfirmed) {
-                            debugger
                             $('#ddmodal').modal('hide');
-                            var ddname = document.getElementById("ddname").value;
+                            var departmentDeleteName = document.getElementById("departmentDeleteName").value;
                             var details = {
-                                ddname: ddname
+                                departmentDeleteName: departmentDeleteName
                             };
                             var str = JSON.stringify(details);
-                            $('#ddeletemodal').modal('hide');
+                            $('#departmentDeleteModal').modal('hide');
                             $.ajax({
                                 type: "POST",
-                                url: "DTusingClass.aspx/Ddelete",
+                                url: "DTusingClass.aspx/DepartmentDelete",
                                 contentType: "application/json; charset=utf-8",
                                 data: str,
                                 success: function (data) {
-                                    debugger
                                     Swal.fire('Department is inactive now!', ' ', 'success')
-                                    reset();
-                                    table();
+                                    Reset();
+                                    Table();
                                 }
                             });
                         }
@@ -1206,10 +1156,9 @@
                 }
             }
 
-            function undodept(dept_id) {
-                debugger
+            function UndoDepartment(departmentID) {
                 var details = {
-                    dept_id: dept_id
+                    departmentID: departmentID
                 };
                 var str = JSON.stringify(details);
                 Swal.fire({
@@ -1224,12 +1173,11 @@
                     if (result.isConfirmed) {
                         $.ajax({
                             type: "POST",
-                            url: "DTusingClass.aspx/UndoDept",
+                            url: "DTusingClass.aspx/UndoDepartment",
                             contentType: "application/json; charset=utf-8",
                             data: str,
                             success: function () {
-                                debugger
-                                table();
+                                Table();
                             }
                         });
                         Swal.fire('Department is active now!', ' ', 'success')
@@ -1237,14 +1185,13 @@
                 })
             }
 
-            function addcity() {
-                debugger
-                $('#ccreatemodal').modal('show');
+            function AddCity() {
+                $('#cityCreateModal').modal('show');
             }
 
-            function ccvalidation() {
-                var ccname = document.getElementById("ccname").value;
-                if (ccname == null || ccname == "") {
+            function CityCreateValidation() {
+                var cityCreateName = document.getElementById("cityCreateName").value;
+                if (cityCreateName == null || cityCreateName == "") {
                     Swal.fire({
                         icon: 'error',
                         title: 'Name can\'t be blank',
@@ -1261,22 +1208,22 @@
                         cancelButtonText: 'No',
                     }).then((result) => {
                         if (result.isConfirmed) {
-                            table();
+                            Table();
                             $('#ccmodal').modal('hide');
-                            var ccname = document.getElementById("ccname").value;
+                            var cityCreateName = document.getElementById("cityCreateName").value;
                             var details = {
-                                ccname: ccname
+                                cityCreateName: cityCreateName
                             };
                             var str = JSON.stringify(details);
-                            $('#ccreatemodal').modal('hide');
+                            $('#cityCreateModal').modal('hide');
                             $.ajax({
                                 type: "POST",
-                                url: "DTusingClass.aspx/Ccreate",
+                                url: "DTusingClass.aspx/CityCreate",
                                 contentType: "application/json; charset=utf-8",
                                 data: str,
                                 success: function (data) {
-                                    ecitydropdown();
-                                    table();
+                                    EmployeeCityDropdown();
+                                    Table();
                                     Swal.fire('City has been created!', ' ', 'success')
                                 }
                             });
@@ -1285,27 +1232,25 @@
                 }
             }
 
-            function deletecity() {
-                debugger
-                $("#cdname").css({
+            function DeleteCity() {
+                $("#cityDeleteName").css({
                     "border-color": "red",
                     "border-width": "2.2px"
                 });
-                $('#cdeletemodal').modal('show');
-                ecitydropdown();
+                $('#cityDeleteModal').modal('show');
+                EmployeeCityDropdown();
             }
 
-            function cdelete() {
-                debugger
-                var cdname = $("#cdname").val();
-                if (cdname == null || cdname == "Choose one") {
+            function CityDelete() {
+                var cityDeleteName = $("#cityDeleteName").val();
+                if (cityDeleteName == null || cityDeleteName == "Choose one") {
                     Swal.fire({
                         icon: 'error',
                         title: 'City Name can\'t be blank',
                     })
                     return false;
                 } else {
-                    $('#cdmodal').modal('hide');
+                    $('#cityDeleteModal').modal('hide');
                     Swal.fire({
                         title: 'Are you sure you want to make the city inactive?',
                         icon: 'warning',
@@ -1316,21 +1261,21 @@
                         cancelButtonText: 'No',
                     }).then((result) => {
                         if (result.isConfirmed) {
-                            var cdname = document.getElementById("cdname").value;
+                            var cityDeleteName = document.getElementById("cityDeleteName").value;
                             var details = {
-                                cdname: cdname
+                                cityDeleteName: cityDeleteName
                             };
                             var str = JSON.stringify(details);
-                            $('#cdeletemodal').modal('hide');
+                            $('#cityDeleteModal').modal('hide');
                             $.ajax({
                                 type: "POST",
-                                url: "DTusingClass.aspx/Cdelete",
+                                url: "DTusingClass.aspx/CityDelete",
                                 contentType: "application/json; charset=utf-8",
                                 data: str,
                                 success: function () {
                                     Swal.fire('City is inactive now!', ' ', 'success')
-                                    reset();
-                                    table();
+                                    Reset();
+                                    Table();
                                 }
                             });
                         }
@@ -1338,10 +1283,9 @@
                 }
             }
 
-            function undocity(city_id) {
-                debugger
+            function UndoCity(cityID) {
                 var details = {
-                    city_id: city_id
+                    cityID: cityID
                 };
                 var str = JSON.stringify(details);
                 Swal.fire({
@@ -1360,15 +1304,14 @@
                             contentType: "application/json; charset=utf-8",
                             data: str,
                             success: function () {
-                                debugger
-                                table();
+                                Table();
                             }
                         });
                         Swal.fire('City is active now!', ' ', 'success')
                     }
                 })
             }
-		</script>
+        </script>
 	</body>
 
 	</html>
